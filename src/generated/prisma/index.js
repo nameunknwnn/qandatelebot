@@ -132,7 +132,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/adityarawat/Documents/internship/flinchchatbot/src/generated/prisma",
+      "value": "/Users/sakshamchaudhary/Documents/Work/qandatelebot/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -146,7 +146,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/adityarawat/Documents/internship/flinchchatbot/prisma/schema.prisma",
+    "sourceFilePath": "/Users/sakshamchaudhary/Documents/Work/qandatelebot/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -160,11 +160,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://neondb_owner:whY4XTrpyG3c@ep-royal-salad-a5cnc0md-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
+        "value": null
       }
     }
   },

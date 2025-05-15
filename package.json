@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "bot:dev": "ts-node src/scripts/startBot.ts"
+    "bot:dev": "npx ts-node src/lib/bot.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

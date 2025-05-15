@@ -15,19 +15,19 @@ interface SessionData {
 type BotContext = Context & SessionFlavor<SessionData>;
 
 // Create a bot instance with the proper context type
-export const bot = new Bot<BotContext>(process.env.TELEGRAM_BOT_TOKEN || "");
+const bot = new Bot(process.env.TELEGRAM_BOT_TOKEN || "");
 
 // Use session to store user data (with proper typing)
-bot.use(session({
-  initial: (): SessionData => ({
-    lastQuery: undefined
-  })
-}));
+// bot.use(session({
+//   initial: (): SessionData => ({
+//     lastQuery: undefined
+//   })
+// }));
 
 // Handle the /start command
 bot.command("start", async (ctx) => {
   await ctx.reply(
-    "👋 Hello! I'm a Gemini-powered bot. Use /q followed by your question to ask me anything!"
+    "👋 Hello! I'm Flinch your personal hackathon assistant. Use /q followed by your question to ask me anything!"
   );
 });
 
@@ -43,13 +43,13 @@ bot.command("q", async (ctx) => {
     }
     
     // Store the query in the session
-    ctx.session.lastQuery = query;
+    // ctx.session.lastQuery = query;
     
     // Send a "thinking" message
     await ctx.reply("Thinking...");
     
     // Generate a response using Gemini with system prompt
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     
     // Create a chat session with the system prompt
     const chat = model.startChat({
@@ -90,5 +90,39 @@ bot.on("message:text", async (ctx) => {
   await ctx.reply("Please use /q followed by your question to ask me something!");
 });
 
-// Export the bot instance
-export default bot;
+
+
+
+
+async function startBot() {
+  console.log("Starting bot in polling mode...");
+
+  console.log(bot)
+  try {
+    console.log("Bot token available:", !!process.env.TELEGRAM_BOT_TOKEN);
+    console.log("Gemini API key available:", !!process.env.GEMINI_API_KEY);
+    
+    // Remove any existing webhook
+    await bot.api.deleteWebhook();
+    
+    // Start the bot in polling mode
+    await bot.start();
+    
+    console.log("Bot is running in polling mode!");
+  } catch (error) {
+    console.error("Error in bot startup:", error);
+  }
+}
+
+startBot().catch((err) => {
+  console.error("Error starting bot:", err);
+  process.exit(1);
+});
+
+
+
+
+
+
+// // Export the bot instance
+// export default bot;

@@ -26,12 +26,12 @@ export default async function Dashboard() {
       <h1 className="text-2xl font-bold mb-6">Telegram Bot Dashboard</h1>
       
       <h2 className="text-xl font-semibold mb-4">Recent Queries</h2>
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
+      <div className="bg-black shadow overflow-hidden sm:rounded-md">
         <ul className="divide-y divide-gray-200">
           {queries.map((query:Query) => (
             <li key={query.id} className="px-6 py-4">
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between">
+              <div className="flex flex-col space-y-2 text-black">
+                <div className="flex justify-between text-white">
                   <span className="font-medium">User: {query.username || query.userId}</span>
                   <span className="text-sm text-gray-500">
                     {new Date(query.createdAt).toLocaleString()}

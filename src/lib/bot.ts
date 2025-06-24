@@ -125,4 +125,4 @@ startBot().catch((err) => {
 
 
 // // Export the bot instance
-// export default bot;
+export default bot;
